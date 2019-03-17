@@ -1,6 +1,5 @@
 package com.example.pojo;
 
-import java.util.Date;
 import javax.persistence.*;
 
 public class User {

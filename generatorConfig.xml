@@ -13,7 +13,7 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/bysj?useUnicode=true&amp;characterEncoding=utf8"
+                        connectionURL="jdbc:mysql://localhost:3306/bysj?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf8"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -29,7 +29,9 @@
                              type="XMLMAPPER"/>
 
 
-        <table tableName="users"></table>
-
+        <table tableName="tiankongti"></table>
+        <table tableName="panduanti"></table>
+        <table tableName="jiandati"></table>
+        <table tableName="zongheti"></table>
     </context>
 </generatorConfiguration>

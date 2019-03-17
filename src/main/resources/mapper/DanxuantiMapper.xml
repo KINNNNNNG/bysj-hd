@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.DanxuantiMapper">
+  <resultMap id="BaseResultMap" type="com.example.pojo.Danxuanti">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="tigan" jdbcType="VARCHAR" property="tigan" />
+    <result column="xx" jdbcType="VARCHAR" property="xx" />
+    <result column="nyd" jdbcType="VARCHAR" property="nyd" />
+    <result column="UID" jdbcType="INTEGER" property="uid" />
+    <result column="createTime" javaType="DATE" property="createTime"/>
+  </resultMap>
+
+  <insert id="insertXzt" parameterType="com.example.pojo.Danxuanti" useGeneratedKeys="true" keyProperty="id">
+    insert into Danxuanti(tigan,xx,nyd,UID,da,createTime) values (#{tigan},#{xx},#{nyd},#{uid},#{da},#{createTime})
+  </insert>
+  <select id="selectXztAll" parameterType="com.example.pojo.Danxuanti" resultType="com.example.pojo.Danxuanti">
+    select * from Danxuanti
+  </select>
+</mapper>
