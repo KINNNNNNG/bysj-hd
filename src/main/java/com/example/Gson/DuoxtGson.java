@@ -14,6 +14,7 @@ public class DuoxtGson {
     private Integer uid;
     private List<String> da;
     private String createTime;
+    private Integer fz;
 
     public Integer getId() {
         return id;
@@ -69,5 +70,13 @@ public class DuoxtGson {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getFz() {
+        return fz;
+    }
+
+    public void setFz(Integer fz) {
+        this.fz = fz;
     }
 }

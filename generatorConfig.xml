@@ -29,9 +29,7 @@
                              type="XMLMAPPER"/>
 
 
-        <table tableName="tiankongti"></table>
-        <table tableName="panduanti"></table>
-        <table tableName="jiandati"></table>
-        <table tableName="zongheti"></table>
+        <table tableName="student"></table>
+        <table tableName="sj"></table>
     </context>
 </generatorConfiguration>

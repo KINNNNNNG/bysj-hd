@@ -4,4 +4,5 @@ import com.example.pojo.User;
 import com.example.utils.MyMapper;
 
 public interface UserMapper extends MyMapper<User> {
+    public User selectByName(String name);
 }

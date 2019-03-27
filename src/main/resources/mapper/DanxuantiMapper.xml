@@ -19,4 +19,16 @@
   <select id="selectXztAll" parameterType="com.example.pojo.Danxuanti" resultType="com.example.pojo.Danxuanti">
     select * from Danxuanti
   </select>
+  <select id="selectByUid" parameterType="com.example.pojo.Danxuanti" resultType="com.example.pojo.Danxuanti">
+    select * from Danxuanti where UID = 1
+  </select>
+  <delete id="deleteXztById" parameterType="java.lang.Integer">
+    delete from danxuanti where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updataById" parameterType="com.example.pojo.Danxuanti">
+    update danxuanti set tigan=#{tigan},xx=#{xx},da=#{da},nyd=#{nyd} where id = #{id}
+  </update>
+  <update id="updataUid" parameterType="com.example.pojo.Danxuanti">
+    update danxuanti set UID=#{uid} where id = #{id}
+  </update>
 </mapper>

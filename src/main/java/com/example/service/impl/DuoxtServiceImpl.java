@@ -6,6 +6,8 @@ import com.example.service.DuoxtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DuoxtServiceImpl implements DuoxtService {
     @Autowired
@@ -13,5 +15,30 @@ public class DuoxtServiceImpl implements DuoxtService {
     @Override
     public void saveDuoxuanti(Duoxuanti duoxuanti) throws Exception {
         duoxuantiMapper.insertDuoxt(duoxuanti);
+    }
+
+    @Override
+    public List<Duoxuanti> queryDxtAll() {
+        return duoxuantiMapper.queryDxtAll();
+    }
+
+    @Override
+    public void deleteDxtById(int Id) {
+        duoxuantiMapper.deleteDxtById(Id);
+    }
+
+    @Override
+    public void updataById(Duoxuanti duoxuanti) {
+        duoxuantiMapper.updataById(duoxuanti);
+    }
+
+    @Override
+    public void updataUid(Duoxuanti duoxuanti) {
+        duoxuantiMapper.updataUid(duoxuanti);
+    }
+
+    @Override
+    public List<Duoxuanti> queryDxtByUid() {
+        return duoxuantiMapper.queryDxtByUid();
     }
 }

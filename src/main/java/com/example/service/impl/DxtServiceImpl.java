@@ -19,12 +19,22 @@ public class DxtServiceImpl implements DxtService {
 
     @Override
     public void updateDanxuanti(Danxuanti danxuanti) {
-
+        danxuantiMapper.updataById(danxuanti);
     }
 
     @Override
-    public void deleteDanxuanti(String danxuantiId) {
+    public void updataUid(Danxuanti danxuanti) {
+        danxuantiMapper.updataUid(danxuanti);
+    }
 
+    @Override
+    public void deleteDanxuanti(int danxuantiId) {
+        danxuantiMapper.deleteXztById(danxuantiId);
+    }
+
+    @Override
+    public List<Danxuanti> selectByUid() {
+        return danxuantiMapper.selectByUid();
     }
 
     @Override

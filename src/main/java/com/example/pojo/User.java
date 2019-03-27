@@ -9,7 +9,7 @@ public class User {
 
     private String name;
 
-    private String sex;
+    private String pass;
 
     @Column(name = "createTime")
     private String createtime;
@@ -42,19 +42,6 @@ public class User {
         this.name = name;
     }
 
-    /**
-     * @return sex
-     */
-    public String getSex() {
-        return sex;
-    }
-
-    /**
-     * @param sex
-     */
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     /**
      * @return createTime
@@ -68,5 +55,13 @@ public class User {
      */
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }

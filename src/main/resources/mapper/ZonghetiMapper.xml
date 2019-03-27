@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.ZonghetiMapper" >
+  <resultMap id="BaseResultMap" type="com.example.pojo.Zongheti" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="tigan" property="tigan" jdbcType="VARCHAR" />
+    <result column="tm" property="tm" jdbcType="VARCHAR" />
+    <result column="da" property="da" jdbcType="VARCHAR" />
+    <result column="fz" property="fz" jdbcType="INTEGER" />
+    <result column="nyd" property="nyd" jdbcType="VARCHAR" />
+    <result column="UID" property="uid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insertZht" parameterType="com.example.pojo.Zongheti" useGeneratedKeys="true" keyProperty="id">
+    insert into zongheti(tigan,tm,da,nyd,UID,createTime) values (#{tigan},#{tm},#{da},#{nyd},#{uid},#{createTime})
+  </insert>
+  <select id="queryZhtAll" parameterType="com.example.pojo.Zongheti" resultType="com.example.pojo.Zongheti">
+    select * from zongheti
+  </select>
+  <select id="queryZhtByUid" parameterType="com.example.pojo.Zongheti" resultType="com.example.pojo.Zongheti">
+    select * from zongheti where UID = 1
+  </select>
+  <delete id="deleteZhtById" parameterType="java.lang.Integer">
+    delete from zongheti where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updataById" parameterType="com.example.pojo.Zongheti">
+    update zongheti set tigan=#{tigan},tm=#{tm},da=#{da},nyd=#{nyd} where id = #{id}
+  </update>
+  <update id="updataUid" parameterType="com.example.pojo.Zongheti">
+    update zongheti set UID=#{uid} where id = #{id}
+  </update>
+</mapper>

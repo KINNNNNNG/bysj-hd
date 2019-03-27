@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserService {
     public void saveUser(User user) throws Exception;
 
+    public User selectByName(String name);
+
     public void updateUser(User user);
 
     public void deleteUser(String userId);

@@ -6,7 +6,10 @@ public class ZhtGson {
     private String tigan;
     private List<ZhtTmGson> da;
     private String nyd;
-
+    private int id;
+    private int uid;
+    private String createTime;
+    private Integer fz;
     public String getNyd() {
         return nyd;
     }
@@ -29,5 +32,37 @@ public class ZhtGson {
 
     public void setTigan(String tigan) {
         this.tigan = tigan;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Integer getFz() {
+        return fz;
+    }
+
+    public void setFz(Integer fz) {
+        this.fz = fz;
     }
 }

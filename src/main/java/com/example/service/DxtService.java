@@ -12,7 +12,11 @@ public interface DxtService {
 
     public void updateDanxuanti(Danxuanti danxuanti);
 
-    public void deleteDanxuanti(String danxuantiId);
+    public void updataUid(Danxuanti danxuanti);
+
+    public void deleteDanxuanti(int danxuantiId);
+
+    public List<Danxuanti> selectByUid();
 
     public Danxuanti queryDanxuantiById(String danxuantiId);
 
