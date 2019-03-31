@@ -42,4 +42,9 @@ public class ZhtServiceImpl implements ZhtService {
         zonghetiMapper.updataUid(zongheti);
     }
 
+    @Override
+    public Zongheti selectById(int id) {
+        return zonghetiMapper.selectById(id);
+    }
+
 }

@@ -67,4 +67,9 @@ public class DxtServiceImpl implements DxtService {
     public void saveUserTransactional(Danxuanti danxuanti) {
 
     }
+
+    @Override
+    public Danxuanti selectById(int id) {
+        return danxuantiMapper.selectById(id);
+    }
 }

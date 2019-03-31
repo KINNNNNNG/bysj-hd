@@ -13,4 +13,5 @@ public interface ZhtService {
     public void deleteZhtById(int Id);
     public void updataById(Zongheti zongheti);
     public void updataUid(Zongheti zongheti);
+    public Zongheti selectById(int id);
 }

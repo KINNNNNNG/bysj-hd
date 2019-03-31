@@ -13,4 +13,5 @@ public interface TktService {
     public void deleteTktById(int Id);
     public void updataById(Tiankongti tiankongti);
     public void updataUid(Tiankongti tiankongti);
+    public Tiankongti selectById(int id);
 }

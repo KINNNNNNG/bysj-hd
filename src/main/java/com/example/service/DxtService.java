@@ -29,4 +29,5 @@ public interface DxtService {
     public Danxuanti queryDanxuantiByIdCustom(String danxuantiId);
 
     public void saveUserTransactional(Danxuanti danxuanti);
+    public Danxuanti selectById(int id);
 }

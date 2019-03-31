@@ -5,5 +5,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface SjService {
-    public void saveSj(Sj sj);
+    public int saveSj(Sj sj);
+    public Sj selectById(int id);
 }

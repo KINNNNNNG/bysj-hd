@@ -5,12 +5,12 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="pass" jdbcType="VARCHAR" property="pass" />
     <result column="createTime" jdbcType="DATE" property="createtime" />
   </resultMap>
-  <select id="selectByName" parameterType="com.example.pojo.User" resultType="com.example.pojo.User">
-    select * from user where name=#{name}
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.example.pojo.User">
+    select * from user where name=#{name,jdbcType=VARCHAR}
   </select>
 </mapper>

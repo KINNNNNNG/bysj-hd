@@ -11,7 +11,14 @@ public class SjServiceImpl implements SjService {
     @Autowired
     SjMapper sjMapper;
     @Override
-    public void saveSj(Sj sj) {
-        sjMapper.saveSj(sj);
+    public int saveSj(Sj sj) {
+        int sj1 = 0;
+        sj1 = sjMapper.saveSj(sj);
+        return sj.getId();
+    }
+
+    @Override
+    public Sj selectById(int id) {
+        return sjMapper.selectById(id);
     }
 }

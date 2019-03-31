@@ -23,6 +23,9 @@
   <select id="queryZhtByUid" parameterType="com.example.pojo.Zongheti" resultType="com.example.pojo.Zongheti">
     select * from zongheti where UID = 1
   </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Zongheti">
+    select * from Zongheti where ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteZhtById" parameterType="java.lang.Integer">
     delete from zongheti where ID = #{id,jdbcType=INTEGER}
   </delete>

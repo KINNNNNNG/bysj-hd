@@ -12,4 +12,5 @@ public interface ZonghetiMapper extends MyMapper<Zongheti> {
     public void deleteZhtById(int id);
     public void updataById(Zongheti zongheti);
     public void updataUid(Zongheti zongheti);
+    public Zongheti selectById(int id);
 }

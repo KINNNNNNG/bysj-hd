@@ -42,4 +42,9 @@ public class JdtServiceImpl implements JdtService {
         jiandatiMapper.updataUid(jiandati);
     }
 
+    @Override
+    public Jiandati selectById(int id) {
+        return jiandatiMapper.selectById(id);
+    }
+
 }

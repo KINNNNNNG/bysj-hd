@@ -12,4 +12,5 @@ public interface PanduantiMapper extends MyMapper<Panduanti> {
     public void deletePdtById(int id);
     public void updataById(Panduanti panduanti);
     public void updataUid(Panduanti panduanti);
+    public Panduanti selectById(int id);
 }

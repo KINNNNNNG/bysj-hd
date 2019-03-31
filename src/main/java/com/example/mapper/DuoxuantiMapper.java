@@ -12,4 +12,5 @@ public interface DuoxuantiMapper extends MyMapper<Duoxuanti> {
     public void updataById(Duoxuanti duoxuanti);
     public void updataUid(Duoxuanti duoxuanti);
     public List<Duoxuanti> queryDxtByUid();
+    public Duoxuanti selectById(int id);
 }

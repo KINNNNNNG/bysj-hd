@@ -22,6 +22,9 @@
   <select id="queryTktByUid" resultType="com.example.pojo.Tiankongti" parameterType="com.example.pojo.Tiankongti">
     select * from tiankongti where UID = 1
   </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Tiankongti">
+    select * from Tiankongti where ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteTktById" parameterType="java.lang.Integer">
     delete from tiankongti where ID = #{id,jdbcType=INTEGER}
   </delete>

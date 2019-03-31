@@ -42,4 +42,9 @@ public class PdtServiceImpl implements PdtService {
         panduantiMapper.updataUid(panduanti);
     }
 
+    @Override
+    public Panduanti selectById(int id) {
+        return panduantiMapper.selectById(id);
+    }
+
 }

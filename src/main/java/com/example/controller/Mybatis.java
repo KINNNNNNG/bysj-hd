@@ -1555,35 +1555,47 @@ public class Mybatis {
     public String getSj(@RequestBody SjGson Gson){
         try{
             StringBuilder xzt = new StringBuilder();
-            for (int i = 0; i < Gson.getXzt().size(); i++) {
-                xzt.append(Gson.getXzt().get(i).getId()+","+Gson.getXzt().get(i).getFz()+"|");
+            if (!Gson.getXzt().isEmpty()) {
+                for (int i = 0; i < Gson.getXzt().size(); i++) {
+                    xzt.append(Gson.getXzt().get(i).getId() + "," + Gson.getXzt().get(i).getFz() + "|");
+                }
+                xzt.delete(xzt.length() - 1, xzt.length());
             }
-            xzt.delete(xzt.length()-1,xzt.length());
             StringBuilder dxt = new StringBuilder();
-            for (int i = 0; i < Gson.getDxt().size(); i++) {
-                dxt.append(Gson.getDxt().get(i).getId()+","+Gson.getDxt().get(i).getFz()+"|");
+            if (!Gson.getDxt().isEmpty()) {
+                for (int i = 0; i < Gson.getDxt().size(); i++) {
+                    dxt.append(Gson.getDxt().get(i).getId() + "," + Gson.getDxt().get(i).getFz() + "|");
+                }
+                dxt.delete(dxt.length() - 1, dxt.length());
             }
-            dxt.delete(dxt.length()-1,dxt.length());
             StringBuilder tkt = new StringBuilder();
-            for (int i = 0; i < Gson.getTkt().size(); i++) {
-                tkt.append(Gson.getTkt().get(i).getId()+","+Gson.getTkt().get(i).getFz()+"|");
+            if (!Gson.getTkt().isEmpty()) {
+                for (int i = 0; i < Gson.getTkt().size(); i++) {
+                    tkt.append(Gson.getTkt().get(i).getId() + "," + Gson.getTkt().get(i).getFz() + "|");
+                }
+                tkt.delete(tkt.length() - 1, tkt.length());
             }
-            tkt.delete(tkt.length()-1,tkt.length());
             StringBuilder pdt = new StringBuilder();
-            for (int i = 0; i < Gson.getPdt().size(); i++) {
-                pdt.append(Gson.getPdt().get(i).getId()+","+Gson.getPdt().get(i).getFz()+"|");
+            if (!Gson.getPdt().isEmpty()) {
+                for (int i = 0; i < Gson.getPdt().size(); i++) {
+                    pdt.append(Gson.getPdt().get(i).getId() + "," + Gson.getPdt().get(i).getFz() + "|");
+                }
+                pdt.delete(pdt.length() - 1, pdt.length());
             }
-            pdt.delete(pdt.length()-1,pdt.length());
             StringBuilder jdt = new StringBuilder();
-            for (int i = 0; i < Gson.getJdt().size(); i++) {
-                jdt.append(Gson.getJdt().get(i).getId()+","+Gson.getJdt().get(i).getFz()+"|");
+            if (!Gson.getJdt().isEmpty()) {
+                for (int i = 0; i < Gson.getJdt().size(); i++) {
+                    jdt.append(Gson.getJdt().get(i).getId() + "," + Gson.getJdt().get(i).getFz() + "|");
+                }
+                jdt.delete(jdt.length() - 1, jdt.length());
             }
-            jdt.delete(jdt.length()-1,jdt.length());
             StringBuilder zht = new StringBuilder();
-            for (int i = 0; i < Gson.getZht().size(); i++) {
-                zht.append(Gson.getZht().get(i).getId()+","+Gson.getZht().get(i).getFz()+"|");
+            if (!Gson.getZht().isEmpty()) {
+                for (int i = 0; i < Gson.getZht().size(); i++) {
+                    zht.append(Gson.getZht().get(i).getId() + "," + Gson.getZht().get(i).getFz() + "|");
+                }
+                zht.delete(zht.length() - 1, zht.length());
             }
-            zht.delete(zht.length()-1,zht.length());
             Sj sj = new Sj();
             if (ksxxGson.getType().equals("1")){
                 sj.setXzt(xzt.toString());
@@ -1614,11 +1626,204 @@ public class Mybatis {
                 ks.delete(ks.length()-1,ks.length());
                 sj.setKs(ks.toString());
             }
-            sjService.saveSj(sj);
-            return "true";
+            int ID =  sjService.saveSj(sj);
+            return ID+"";
         }catch (Exception e){
             e.printStackTrace();
             return e.toString();
         }
+    }
+    @RequestMapping(value = "getSjContent")
+    public SjGson getSjConten(Integer ID){
+        Sj sj = sjService.selectById(ID);
+        String xztIdFzString = null;
+        List<Integer> xztId = new ArrayList<>();
+        List<Integer> xztFz = new ArrayList<>();
+        String dxtIdFzString = null;
+        List<Integer> dxtId = new ArrayList<>();
+        List<Integer> dxtFz = new ArrayList<>();
+        String tktIdFzString = null;
+        List<Integer> tktId = new ArrayList<>();
+        List<Integer> tktFz = new ArrayList<>();
+        String pdtIdFzString = null;
+        List<Integer> pdtId = new ArrayList<>();
+        List<Integer> pdtFz = new ArrayList<>();
+        String jdtIdFzString = null;
+        List<Integer> jdtId = new ArrayList<>();
+        List<Integer> jdtFz = new ArrayList<>();
+        String zhtIdFzString = null;
+        List<Integer> zhtId = new ArrayList<>();
+        List<Integer> zhtFz = new ArrayList<>();
+        if (!sj.getXzt().isEmpty()){
+             xztIdFzString = sj.getXzt();
+        }
+        if (!sj.getDxt().isEmpty()){
+            dxtIdFzString = sj.getDxt();
+        }
+        if (!sj.getTkt().isEmpty()){
+            tktIdFzString = sj.getTkt();
+        }
+        if (!sj.getPdt().isEmpty()){
+            pdtIdFzString = sj.getPdt();
+        }
+        if (!sj.getJdt().isEmpty()){
+            jdtIdFzString = sj.getJdt();
+        }
+        if (!sj.getZht().isEmpty()){
+            zhtIdFzString = sj.getZht();
+        }
+
+        if (xztIdFzString!=null){
+            String[] temp = xztIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                xztId.add(Integer.parseInt(temp1[0]));
+                xztFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        if (dxtIdFzString != null){
+            String[] temp = dxtIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                dxtId.add(Integer.parseInt(temp1[0]));
+                dxtFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        if (tktIdFzString!=null){
+            String[] temp = tktIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                tktId.add(Integer.parseInt(temp1[0]));
+                tktFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        if (pdtIdFzString!=null){
+            String[] temp = pdtIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                pdtId.add(Integer.parseInt(temp1[0]));
+                pdtFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        if (jdtIdFzString!=null){
+            String[] temp = jdtIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                jdtId.add(Integer.parseInt(temp1[0]));
+                jdtFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        if (zhtIdFzString!=null){
+            String[] temp = zhtIdFzString.split("\\|");
+            for (int i = 0; i < temp.length; i++) {
+                String[] temp1 = temp[i].split(",");
+                zhtId.add(Integer.parseInt(temp1[0]));
+                zhtFz.add(Integer.parseInt(temp1[1]));
+            }
+        }
+        SjGson gson = new SjGson();
+        List<DxtGson> dxtGsons = new ArrayList<>();
+        for (int i = 0; i < xztId.size(); i++) {
+            Danxuanti danxuanti = dxtService.selectById(xztId.get(i));
+            DxtGson dxtGson = new DxtGson();
+            dxtGson.setTigan(danxuanti.getTigan());
+            dxtGson.setId(danxuanti.getId());
+            dxtGson.setFz(xztFz.get(i));
+            dxtGson.setDa(danxuanti.getDa());
+            String[] xx = danxuanti.getXx().split("\\|");
+            List<DxtXxGson> dxtXxGsonList = new ArrayList<>();
+            for (int j=0;j<xx.length;j++){
+                DxtXxGson dxtXxGson = new DxtXxGson();
+                dxtXxGson.setText(xx[j]);
+                dxtXxGsonList.add(dxtXxGson);
+            }
+            dxtGson.setXx(dxtXxGsonList);
+            dxtGsons.add(dxtGson);
+        }
+        gson.setXzt(dxtGsons);
+        List<DuoxtGson> duoxtGsons = new ArrayList<>();
+        for (int i = 0; i < dxtId.size(); i++) {
+            Duoxuanti duoxuanti = duoxtService.selectById(dxtId.get(i));
+            DuoxtGson duoxtGson = new DuoxtGson();
+            duoxtGson.setId(duoxuanti.getId());
+            duoxtGson.setFz(dxtFz.get(i));
+            duoxtGson.setTigan(duoxuanti.getTigan());
+            String[] xx = duoxuanti.getXx().split("\\|");
+            List<DuoxtXxGson> xxlist = new ArrayList<>();
+            String[] da = duoxuanti.getDa().split("\\|");
+            List<String> dalist = new ArrayList<>();
+            for (int j=0;j<xx.length;j++){
+                DuoxtXxGson duoxtXxGson = new DuoxtXxGson();
+                duoxtXxGson.setText(xx[j]);
+                xxlist.add(duoxtXxGson);
+            }
+            duoxtGson.setXx(xxlist);
+            for (int j=0;j<da.length;j++){
+                dalist.add(da[j]);
+            }
+            duoxtGson.setDa(dalist);
+            duoxtGsons.add(duoxtGson);
+        }
+        gson.setDxt(duoxtGsons);
+        List<TktGson> tktGsons = new ArrayList<>();
+        for (int i=0;i<tktId.size();i++){
+            Tiankongti tiankongti = tktService.selectById(tktId.get(i));
+            TktGson tktGson = new TktGson();
+            tktGson.setFz(tktFz.get(i));
+            tktGson.setId(tiankongti.getId());
+            tktGson.setTigan(tiankongti.getTigan());
+            String[] da = tiankongti.getDa().split("\\|");
+            List<TktDaGson> dalist = new ArrayList<>();
+            for (int j=0;j<da.length;j++){
+                TktDaGson tktDaGson = new TktDaGson();
+                tktDaGson.setText(da[j]);
+                dalist.add(tktDaGson);
+            }
+            tktGson.setDa(dalist);
+            tktGsons.add(tktGson);
+        }
+        gson.setTkt(tktGsons);
+        List<PdtGson> pdtGsons = new ArrayList<>();
+        for (int i=0;i<pdtId.size();i++){
+            Panduanti panduanti = pdtService.selectById(pdtId.get(i));
+            PdtGson pdtGson = new PdtGson();
+            pdtGson.setFz(pdtFz.get(i));
+            pdtGson.setId(panduanti.getId());
+            pdtGson.setTigan(panduanti.getTigan());
+            pdtGson.setDa(panduanti.getDa());
+            pdtGsons.add(pdtGson);
+        }
+        gson.setPdt(pdtGsons);
+        List<JdtGson> jdtGsons = new ArrayList<>();
+        for (int i=0;i<jdtId.size();i++){
+            Jiandati jiandati = jdtService.selectById(jdtId.get(i));
+            JdtGson jdtGson = new JdtGson();
+            jdtGson.setFz(jdtFz.get(i));
+            jdtGson.setId(jiandati.getId());
+            jdtGson.setTigan(jiandati.getTigan());
+            jdtGson.setDa(jiandati.getDa());
+            jdtGsons.add(jdtGson);
+        }
+        gson.setJdt(jdtGsons);
+        List<ZhtGson> zhtGsons = new ArrayList<>();
+        for (int i=0;i<zhtId.size();i++){
+            Zongheti zongheti = zhtService.selectById(zhtId.get(i));
+            ZhtGson zhtGson = new ZhtGson();
+            zhtGson.setId(zongheti.getId());
+            zhtGson.setTigan(zongheti.getTigan());
+            String[] tm = zongheti.getTm().split("\\|");
+            List<ZhtTmGson> tmlist = new ArrayList<>();
+            String[] da = zongheti.getDa().split("\\|");
+            for (int j=0;j<tm.length;j++){
+                ZhtTmGson zhtTmGson = new ZhtTmGson();
+                zhtTmGson.setTm(tm[j]);
+                zhtTmGson.setDa(da[j]);
+                tmlist.add(zhtTmGson);
+            }
+            zhtGson.setDa(tmlist);
+            zhtGsons.add(zhtGson);
+        }
+        gson.setZht(zhtGsons);
+        return gson;
     }
 }

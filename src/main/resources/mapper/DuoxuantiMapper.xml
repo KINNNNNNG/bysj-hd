@@ -24,6 +24,9 @@
   <select id="queryDxtByUid" parameterType="com.example.pojo.Duoxuanti" resultType="com.example.pojo.Duoxuanti">
     select * from duoxuanti where UID=1
   </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Duoxuanti">
+    select * from Duoxuanti where ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteDxtById" parameterType="java.lang.Integer">
     delete from duoxuanti where ID = #{id,jdbcType=INTEGER}
   </delete>

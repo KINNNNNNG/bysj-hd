@@ -42,4 +42,9 @@ public class TktServiceImpl implements TktService {
         tiankongtiMapper.updataUid(tiankongti);
     }
 
+    @Override
+    public Tiankongti selectById(int id) {
+        return tiankongtiMapper.selectById(id);
+    }
+
 }

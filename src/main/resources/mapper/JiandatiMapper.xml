@@ -22,6 +22,9 @@
   <select id="queryJdtByUid" resultType="com.example.pojo.Jiandati" parameterType="com.example.pojo.Jiandati">
     select * from jiandati where UID=1
   </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Jiandati">
+    select * from Jiandati where ID = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteJdtById" parameterType="java.lang.Integer">
     delete from jiandati where ID = #{id,jdbcType=INTEGER}
   </delete>
