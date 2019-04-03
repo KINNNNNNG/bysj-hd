@@ -72,4 +72,9 @@ public class DxtServiceImpl implements DxtService {
     public Danxuanti selectById(int id) {
         return danxuantiMapper.selectById(id);
     }
+
+    @Override
+    public int selectNum() {
+        return danxuantiMapper.selectNum();
+    }
 }

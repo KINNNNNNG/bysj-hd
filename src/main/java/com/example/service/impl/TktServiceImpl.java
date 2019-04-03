@@ -47,4 +47,9 @@ public class TktServiceImpl implements TktService {
         return tiankongtiMapper.selectById(id);
     }
 
+    @Override
+    public int selectNum() {
+        return tiankongtiMapper.selectNum();
+    }
+
 }

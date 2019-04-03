@@ -29,7 +29,6 @@
                              type="XMLMAPPER"/>
 
 
-        <table tableName="student"></table>
-        <table tableName="sj"></table>
+        <table tableName="ksda"></table>
     </context>
 </generatorConfiguration>

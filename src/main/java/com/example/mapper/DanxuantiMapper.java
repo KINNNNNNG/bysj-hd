@@ -14,4 +14,5 @@ public interface DanxuantiMapper extends MyMapper<Danxuanti> {
     public void updataUid(Danxuanti danxuanti);
     public List<Danxuanti> selectByUid();
     public Danxuanti selectById(int id);
+    public int selectNum();
 }

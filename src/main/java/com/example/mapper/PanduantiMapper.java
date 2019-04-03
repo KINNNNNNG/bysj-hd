@@ -13,4 +13,5 @@ public interface PanduantiMapper extends MyMapper<Panduanti> {
     public void updataById(Panduanti panduanti);
     public void updataUid(Panduanti panduanti);
     public Panduanti selectById(int id);
+    public int selectNum();
 }

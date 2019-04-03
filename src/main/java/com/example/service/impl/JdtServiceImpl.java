@@ -47,4 +47,9 @@ public class JdtServiceImpl implements JdtService {
         return jiandatiMapper.selectById(id);
     }
 
+    @Override
+    public int selectNum() {
+        return jiandatiMapper.selectNum();
+    }
+
 }

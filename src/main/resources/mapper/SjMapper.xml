@@ -17,9 +17,10 @@
     <result column="ks" property="ks" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR"/>
     <result column="ksxz" property="ksxz" jdbcType="VARCHAR"/>
+    <result column="zf" property="zf" jdbcType="VARCHAR"/>
   </resultMap>
   <insert id="saveSj" parameterType="com.example.pojo.Sj" keyColumn="ID" useGeneratedKeys="true" keyProperty="id">
-    insert into sj(name,xzt,tkt,dxt,pdt,jdt,zht,kl,ks,type,ksxz) values (#{name},#{xzt},#{tkt},#{dxt},#{pdt},#{jdt},#{zht},#{kl},#{ks},#{type},#{ksxz})
+    insert into sj(name,xzt,tkt,dxt,pdt,jdt,zht,kl,ks,type,ksxz,zf) values (#{name},#{xzt},#{tkt},#{dxt},#{pdt},#{jdt},#{zht},#{kl},#{ks},#{type},#{ksxz},#{zf})
   </insert>
   <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Sj">
     select * from sj where ID = #{id,jdbcType=INTEGER}

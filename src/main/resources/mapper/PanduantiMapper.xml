@@ -25,6 +25,9 @@
   <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Panduanti">
     select * from Panduanti where ID = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectNum" resultType="java.lang.Integer">
+    select count(*) from panduanti
+  </select>
   <delete id="deletePdtById" parameterType="java.lang.Integer">
     delete from panduanti where ID = #{id,jdbcType=INTEGER}
   </delete>

@@ -46,4 +46,9 @@ public class DuoxtServiceImpl implements DuoxtService {
     public Duoxuanti selectById(int id) {
         return duoxuantiMapper.selectById(id);
     }
+
+    @Override
+    public int selectNum() {
+        return duoxuantiMapper.selectNum();
+    }
 }

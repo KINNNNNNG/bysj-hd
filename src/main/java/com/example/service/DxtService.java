@@ -30,4 +30,5 @@ public interface DxtService {
 
     public void saveUserTransactional(Danxuanti danxuanti);
     public Danxuanti selectById(int id);
+    public int selectNum();
 }

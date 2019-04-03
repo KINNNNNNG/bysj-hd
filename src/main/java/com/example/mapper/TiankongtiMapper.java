@@ -13,4 +13,5 @@ public interface TiankongtiMapper extends MyMapper<Tiankongti> {
     public void updataById(Tiankongti tiankongti);
     public void updataUid(Tiankongti tiankongti);
     public Tiankongti selectById(int id);
+    public int selectNum();
 }

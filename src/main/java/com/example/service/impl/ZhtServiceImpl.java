@@ -47,4 +47,9 @@ public class ZhtServiceImpl implements ZhtService {
         return zonghetiMapper.selectById(id);
     }
 
+    @Override
+    public int selectNum() {
+        return zonghetiMapper.selectNum();
+    }
+
 }

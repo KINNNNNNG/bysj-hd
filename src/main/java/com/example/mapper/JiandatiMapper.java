@@ -13,4 +13,5 @@ public interface JiandatiMapper extends MyMapper<Jiandati> {
     public void updataById(Jiandati jiandati);
     public void updataUid(Jiandati jiandati);
     public Jiandati selectById(int id);
+    public int selectNum();
 }

@@ -13,4 +13,7 @@
   <select id="queryAll" resultType="com.example.pojo.Student" parameterType="com.example.pojo.Student">
     select * from student
   </select>
+  <select id="queryByUser" resultType="com.example.pojo.Student" parameterType="java.lang.String">
+    select * from student where user = #{id,jdbcType=VARCHAR}
+  </select>
 </mapper>

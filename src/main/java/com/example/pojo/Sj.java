@@ -26,6 +26,7 @@ public class Sj {
     private String ks;
     private String type;
     private String ksxz;
+    private String zf;
 
     /**
      * @return ID
@@ -181,5 +182,13 @@ public class Sj {
 
     public void setKsxz(String ksxz) {
         this.ksxz = ksxz;
+    }
+
+    public String getZf() {
+        return zf;
+    }
+
+    public void setZf(String zf) {
+        this.zf = zf;
     }
 }

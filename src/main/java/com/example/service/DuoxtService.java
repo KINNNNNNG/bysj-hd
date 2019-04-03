@@ -15,4 +15,5 @@ public interface DuoxtService {
     public void updataUid(Duoxuanti duoxuanti);
     public List<Duoxuanti> queryDxtByUid();
     public Duoxuanti selectById(int id);
+    public int selectNum();
 }

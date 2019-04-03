@@ -47,4 +47,9 @@ public class PdtServiceImpl implements PdtService {
         return panduantiMapper.selectById(id);
     }
 
+    @Override
+    public int selectNum() {
+        return panduantiMapper.selectNum();
+    }
+
 }

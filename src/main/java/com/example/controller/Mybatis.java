@@ -1,6 +1,9 @@
 package com.example.controller;
 
 import com.example.Gson.*;
+import com.example.Gson.Ksda.KsdaGson;
+import com.example.Gson.sjda.ksresult;
+import com.example.Gson.sjda.sjda;
 import com.example.pojo.*;
 import com.example.service.*;
 import org.apache.commons.collections.CollectionUtils;
@@ -1554,10 +1557,12 @@ public class Mybatis {
     @RequestMapping(value = "getSj")
     public String getSj(@RequestBody SjGson Gson){
         try{
+            float zf = 0;
             StringBuilder xzt = new StringBuilder();
             if (!Gson.getXzt().isEmpty()) {
                 for (int i = 0; i < Gson.getXzt().size(); i++) {
                     xzt.append(Gson.getXzt().get(i).getId() + "," + Gson.getXzt().get(i).getFz() + "|");
+                    zf+=Gson.getXzt().get(i).getFz();
                 }
                 xzt.delete(xzt.length() - 1, xzt.length());
             }
@@ -1565,6 +1570,7 @@ public class Mybatis {
             if (!Gson.getDxt().isEmpty()) {
                 for (int i = 0; i < Gson.getDxt().size(); i++) {
                     dxt.append(Gson.getDxt().get(i).getId() + "," + Gson.getDxt().get(i).getFz() + "|");
+                    zf+=Gson.getDxt().get(i).getFz();
                 }
                 dxt.delete(dxt.length() - 1, dxt.length());
             }
@@ -1572,6 +1578,7 @@ public class Mybatis {
             if (!Gson.getTkt().isEmpty()) {
                 for (int i = 0; i < Gson.getTkt().size(); i++) {
                     tkt.append(Gson.getTkt().get(i).getId() + "," + Gson.getTkt().get(i).getFz() + "|");
+                    zf+=Gson.getTkt().get(i).getFz();
                 }
                 tkt.delete(tkt.length() - 1, tkt.length());
             }
@@ -1579,6 +1586,7 @@ public class Mybatis {
             if (!Gson.getPdt().isEmpty()) {
                 for (int i = 0; i < Gson.getPdt().size(); i++) {
                     pdt.append(Gson.getPdt().get(i).getId() + "," + Gson.getPdt().get(i).getFz() + "|");
+                    zf+=Gson.getPdt().get(i).getFz();
                 }
                 pdt.delete(pdt.length() - 1, pdt.length());
             }
@@ -1586,6 +1594,7 @@ public class Mybatis {
             if (!Gson.getJdt().isEmpty()) {
                 for (int i = 0; i < Gson.getJdt().size(); i++) {
                     jdt.append(Gson.getJdt().get(i).getId() + "," + Gson.getJdt().get(i).getFz() + "|");
+                    zf+=Gson.getJdt().get(i).getFz();
                 }
                 jdt.delete(jdt.length() - 1, jdt.length());
             }
@@ -1593,6 +1602,7 @@ public class Mybatis {
             if (!Gson.getZht().isEmpty()) {
                 for (int i = 0; i < Gson.getZht().size(); i++) {
                     zht.append(Gson.getZht().get(i).getId() + "," + Gson.getZht().get(i).getFz() + "|");
+                    zf+=Gson.getZht().get(i).getFz();
                 }
                 zht.delete(zht.length() - 1, zht.length());
             }
@@ -1608,6 +1618,7 @@ public class Mybatis {
                 sj.setType(ksxxGson.getType());
                 sj.setKsxz(ksxxGson.getKsxz());
                 sj.setKl(ksxxGson.getKl());
+                sj.setZf(zf+"");
             }
             if (ksxxGson.getType().equals("2")){
                 sj.setXzt(xzt.toString());
@@ -1625,6 +1636,7 @@ public class Mybatis {
                 }
                 ks.delete(ks.length()-1,ks.length());
                 sj.setKs(ks.toString());
+                sj.setZf(zf+"");
             }
             int ID =  sjService.saveSj(sj);
             return ID+"";
@@ -1636,6 +1648,7 @@ public class Mybatis {
     @RequestMapping(value = "getSjContent")
     public SjGson getSjConten(Integer ID){
         Sj sj = sjService.selectById(ID);
+        float num =0;
         String xztIdFzString = null;
         List<Integer> xztId = new ArrayList<>();
         List<Integer> xztFz = new ArrayList<>();
@@ -1729,6 +1742,7 @@ public class Mybatis {
             dxtGson.setTigan(danxuanti.getTigan());
             dxtGson.setId(danxuanti.getId());
             dxtGson.setFz(xztFz.get(i));
+            num+=xztFz.get(i);
             dxtGson.setDa(danxuanti.getDa());
             String[] xx = danxuanti.getXx().split("\\|");
             List<DxtXxGson> dxtXxGsonList = new ArrayList<>();
@@ -1747,6 +1761,7 @@ public class Mybatis {
             DuoxtGson duoxtGson = new DuoxtGson();
             duoxtGson.setId(duoxuanti.getId());
             duoxtGson.setFz(dxtFz.get(i));
+            num+=dxtFz.get(i);
             duoxtGson.setTigan(duoxuanti.getTigan());
             String[] xx = duoxuanti.getXx().split("\\|");
             List<DuoxtXxGson> xxlist = new ArrayList<>();
@@ -1770,6 +1785,7 @@ public class Mybatis {
             Tiankongti tiankongti = tktService.selectById(tktId.get(i));
             TktGson tktGson = new TktGson();
             tktGson.setFz(tktFz.get(i));
+            num+=tktFz.get(i);
             tktGson.setId(tiankongti.getId());
             tktGson.setTigan(tiankongti.getTigan());
             String[] da = tiankongti.getDa().split("\\|");
@@ -1788,6 +1804,7 @@ public class Mybatis {
             Panduanti panduanti = pdtService.selectById(pdtId.get(i));
             PdtGson pdtGson = new PdtGson();
             pdtGson.setFz(pdtFz.get(i));
+            num+=pdtFz.get(i);
             pdtGson.setId(panduanti.getId());
             pdtGson.setTigan(panduanti.getTigan());
             pdtGson.setDa(panduanti.getDa());
@@ -1799,6 +1816,7 @@ public class Mybatis {
             Jiandati jiandati = jdtService.selectById(jdtId.get(i));
             JdtGson jdtGson = new JdtGson();
             jdtGson.setFz(jdtFz.get(i));
+            num+=jdtFz.get(i);
             jdtGson.setId(jiandati.getId());
             jdtGson.setTigan(jiandati.getTigan());
             jdtGson.setDa(jiandati.getDa());
@@ -1809,6 +1827,8 @@ public class Mybatis {
         for (int i=0;i<zhtId.size();i++){
             Zongheti zongheti = zhtService.selectById(zhtId.get(i));
             ZhtGson zhtGson = new ZhtGson();
+            zhtGson.setFz(zhtFz.get(i));
+            num+=zhtFz.get(i);
             zhtGson.setId(zongheti.getId());
             zhtGson.setTigan(zongheti.getTigan());
             String[] tm = zongheti.getTm().split("\\|");
@@ -1824,6 +1844,214 @@ public class Mybatis {
             zhtGsons.add(zhtGson);
         }
         gson.setZht(zhtGsons);
+        gson.setAllfz(num);
+        gson.setName(sj.getName());
         return gson;
+    }
+    @RequestMapping(value = "querySjAll")
+    public List<Sj> querySjAll(){
+        return sjService.selectAll();
+    }
+    @RequestMapping(value = "kslogin")
+    public String kslogin(@RequestBody ksloginGson gson){
+        try{
+            int temp = 0;
+            Sj sj =  sjService.selectById(gson.getSjid());
+            String[] ksuser = sj.getKs().split("\\|");
+            for (int i = 0; i < ksuser.length; i++) {
+                if (ksuser[i].equals(gson.getUser())){
+                    temp++;
+                    Student student = studentService.queryByUser(gson.getUser());
+                    if (student.getUser().equals(gson.getUser())&&student.getPass().equals(gson.getPass())){
+                        return "ture";
+                    }else {
+                        return "请检查账号密码是否正确";
+                    }
+                }
+            }
+            if (temp ==0){
+                return "考生不在此场考试内";
+            }else {
+                return "ture";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @Autowired
+    KsdaService ksdaService;
+    @RequestMapping(value = "submitksda")
+    public ksresult submitksda(@RequestBody sjda sjda){
+        Sj sj = sjService.selectById(sjda.getKsid());
+        ksresult ksresult = new ksresult();
+        Ksda ksda = new Ksda();
+        ksda.setMf(sj.getZf());
+        ksda.setCreatetime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        ksda.setName(sjda.getUser());
+        ksda.setSjid(sjda.getKsid());
+        float num = 0;
+        float xztfs = 0;
+        StringBuilder ksxzt = new StringBuilder();
+        for (int i = 0; i < sjda.getXzt().size(); i++) {
+            Danxuanti danxuanti = dxtService.selectById(sjda.getXzt().get(i).getId());
+            ksxzt.append(sjda.getXzt().get(i).getId()+",");
+            if (danxuanti.getDa().equals(sjda.getXzt().get(i).getDa())){
+                num+=sjda.getXzt().get(i).getFz();
+                xztfs+=sjda.getXzt().get(i).getFz();
+                ksxzt.append(sjda.getXzt().get(i).getFz()+"|");
+            }else {
+                ksxzt.append(0+"|");
+            }
+        }
+        if (ksxzt.length()>0){
+            ksxzt.delete(ksxzt.length()-1,ksxzt.length());
+        }
+        ksda.setXzt(ksxzt.toString());
+        ksresult.setXzt(xztfs);
+        float dxtfs = 0;
+        StringBuilder ksdxt = new StringBuilder();
+        for (int i = 0; i < sjda.getDxt().size(); i++) {
+            Duoxuanti duoxuanti = duoxtService.selectById(sjda.getDxt().get(i).getId());
+            ksdxt.append(sjda.getDxt().get(i).getId() + ",");
+            String[] da = duoxuanti.getDa().split("\\|");
+            float temp = sjda.getDxt().get(i).getFz() / (float) da.length;
+            float temp1 = 0;
+            for (int j = 0; j < da.length; j++) {
+                for (int k = 0; k < sjda.getDxt().get(i).getDa().size(); k++) {
+                    if (da[j].equals(sjda.getDxt().get(i).getDa().get(k))) {
+                        num += temp;
+                        dxtfs += temp;
+                        temp1 += temp;
+                    }
+                }
+                ksdxt.append(temp1 + "|");
+            }
+        }
+        if (ksdxt.length()>0){
+            ksdxt.delete(ksdxt.length()-1,ksdxt.length());
+        }
+        ksda.setDxt(ksdxt.toString());
+        ksresult.setDxt(dxtfs);
+        float tktfs = 0;
+        StringBuilder kstkt = new StringBuilder();
+        for (int i = 0; i < sjda.getTkt().size(); i++) {
+            Tiankongti tiankongti = tktService.selectById(sjda.getTkt().get(i).getId());
+            kstkt.append(sjda.getTkt().get(i).getId()+",");
+            String[] dalist = tiankongti.getDa().split("\\|");
+            String[][] da = new String[dalist.length][];
+            for (int j = 0; j < dalist.length; j++) {
+                da[j] =  dalist[j].split(",");
+            }
+            float temp = sjda.getTkt().get(i).getFz()/(float)dalist.length;
+            float temp1 = 0;
+            for (int j = 0; j < dalist.length; j++) {
+                for (int k = 0; k < da[j].length; k++) {
+                    if (da[j][k].equals(sjda.getTkt().get(i).getDa().get(j).getDa())){
+                        num+=temp;
+                        tktfs+=temp;
+                        temp1+=temp;
+                    }
+                }
+            }
+            kstkt.append(temp1+"|");
+        }
+        if (kstkt.length()>0){
+            kstkt.delete(kstkt.length()-1,kstkt.length());
+        }
+        ksda.setTkt(kstkt.toString());
+        ksresult.setTkt(tktfs);
+        float pdtfs = 0;
+        StringBuilder kspdt = new StringBuilder();
+        for (int i = 0; i < sjda.getPdt().size(); i++) {
+            Panduanti panduanti = pdtService.selectById(sjda.getPdt().get(i).getId());
+            kspdt.append(sjda.getPdt().get(i).getId()+",");
+            if (panduanti.getDa().equals(sjda.getPdt().get(i).getDa())){
+                num+=sjda.getPdt().get(i).getFz();
+                pdtfs+=sjda.getPdt().get(i).getFz();
+                kspdt.append(sjda.getPdt().get(i).getFz()+"|");
+            }else {
+                kspdt.append(0+"|");
+            }
+        }
+        if (kspdt.length()>0){
+            kspdt.delete(kspdt.length()-1,kspdt.length());
+        }
+        ksda.setPdt(kspdt.toString());
+        ksresult.setPdt(pdtfs);
+        float jdtfs = 0;
+        StringBuilder ksjdt = new StringBuilder();
+        for (int i = 0; i < sjda.getJdt().size(); i++) {
+            Jiandati jiandati = jdtService.selectById(sjda.getJdt().get(i).getId());
+            ksjdt.append(sjda.getJdt().get(i).getId()+",");
+            float temp = levenshtein.levenshtein(jiandati.getDa(),sjda.getJdt().get(i).getDa());
+            num+=sjda.getJdt().get(i).getFz()*temp;
+            jdtfs +=sjda.getJdt().get(i).getFz()*temp;
+            ksjdt.append(sjda.getJdt().get(i).getFz()*temp+"|");
+        }
+        if (ksjdt.length()>0){
+            ksjdt.delete(ksjdt.length()-1,ksjdt.length());
+        }
+        ksda.setJdt(ksjdt.toString());
+        ksresult.setJdt(jdtfs);
+        float zhtfs = 0;
+        StringBuilder kszht = new StringBuilder();
+        for (int i = 0; i < sjda.getZht().size(); i++) {
+            Zongheti zongheti = zhtService.selectById(sjda.getZht().get(i).getId());
+            kszht.append(sjda.getZht().get(i).getId()+",");
+            String[] da = zongheti.getDa().split("\\|");
+            float temp1 = 0;
+            for (int j = 0; j < da.length; j++) {
+                float temp = levenshtein.levenshtein(da[j],sjda.getZht().get(i).getDa().get(j).getDa());
+                num+=sjda.getZht().get(i).getFz()*temp;
+                zhtfs+=sjda.getZht().get(i).getFz()*temp;
+                temp1+=sjda.getZht().get(i).getFz()*temp;
+            }
+            kszht.append(temp1+"|");
+        }
+        if (kszht.length()>0){
+            kszht.delete(kszht.length()-1,kszht.length());
+        }
+        ksda.setZht(kszht.toString());
+        ksresult.setZht(zhtfs);
+        ksresult.setAllfz(num);
+        ksda.setFs(num+"");
+        ksdaService.saveKsda(ksda);
+        return ksresult;
+    }
+    @RequestMapping(value = "sjDeleteById")
+    public String sjDeleteById(Integer id){
+        try {
+            sjService.deleteById(id);
+            return "ture";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "TmNum")
+    public AllTmNumGson TmNum(){
+        AllTmNumGson allTmNumGson = new AllTmNumGson();
+        allTmNumGson.setXzt(dxtService.selectNum());
+        allTmNumGson.setDxt(duoxtService.selectNum());
+        allTmNumGson.setTkt(tktService.selectNum());
+        allTmNumGson.setPdt(pdtService.selectNum());
+        allTmNumGson.setJdt(jdtService.selectNum());
+        allTmNumGson.setZht(zhtService.selectNum());
+        return allTmNumGson;
+    }
+    @RequestMapping(value = "getksda")
+    public List<KsdaGson> getksda(int id){
+        List<Ksda> ksdas = ksdaService.slectById(id);
+        List<KsdaGson> ksdaGsons = new ArrayList<>();
+        for (int i = 0; i < ksdas.size(); i++) {
+            KsdaGson ksdaGson = new KsdaGson();
+            ksdaGson.setFs(Float.parseFloat(ksdas.get(i).getFs()));
+            ksdaGson.setName(ksdas.get(i).getName());
+            ksdaGson.setMf(Float.parseFloat(ksdas.get(i).getMf()));
+            ksdaGsons.add(ksdaGson);
+        }
+
+        return ksdaGsons;
     }
 }

@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface StudentService {
     public List<Student> queryAll();
+    public Student queryByUser(String user);
 }

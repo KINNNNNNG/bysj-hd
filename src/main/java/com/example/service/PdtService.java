@@ -14,4 +14,5 @@ public interface PdtService {
     public void updataById(Panduanti panduanti);
     public void updataUid(Panduanti panduanti);
     public Panduanti selectById(int id);
+    public int selectNum();
 }

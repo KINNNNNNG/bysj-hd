@@ -3,12 +3,14 @@ package com.example.Gson;
 import java.util.List;
 
 public class SjGson {
-    public List<DxtGson> xzt;
-    public List<DuoxtGson> dxt;
-    public List<TktGson> tkt;
-    public List<PdtGson> pdt;
-    public List<JdtGson> jdt;
-    public List<ZhtGson> zht;
+    private String name;
+    private List<DxtGson> xzt;
+    private List<DuoxtGson> dxt;
+    private List<TktGson> tkt;
+    private List<PdtGson> pdt;
+    private List<JdtGson> jdt;
+    private List<ZhtGson> zht;
+    private float allfz;
 
     public List<DxtGson> getXzt() {
         return xzt;
@@ -56,5 +58,21 @@ public class SjGson {
 
     public void setZht(List<ZhtGson> zht) {
         this.zht = zht;
+    }
+
+    public float getAllfz() {
+        return allfz;
+    }
+
+    public void setAllfz(float allfz) {
+        this.allfz = allfz;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
