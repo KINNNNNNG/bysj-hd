@@ -26,7 +26,6 @@ public class XWPFUtils {
         for (XWPFRun run : runList) {
             //XWPFRun是POI对xml元素解析后生成的自己的属性，无法通过xml解析，需要先转化成CTR
             CTR ctr = run.getCTR();
-
             //对子元素进行遍历
             XmlCursor c = ctr.newCursor();
             //这个就是拿到所有的子元素：

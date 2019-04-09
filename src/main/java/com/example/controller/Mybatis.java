@@ -1135,12 +1135,12 @@ public class Mybatis {
                 return "文件类型错误";
             }
             Sheet sheet = wb.getSheetAt(0);
-            xztuploadexcel(sheet);
-            dxtuploadexcel(sheet);
-            tktuploadexcel(sheet);
-            pdtuploadexcel(sheet);
-            jdtuploadexcel(sheet);
-            zhtuploadexcel(sheet);
+            uploadnum[0] = xztuploadexcel(sheet);
+            uploadnum[1] = dxtuploadexcel(sheet);
+            uploadnum[2] = tktuploadexcel(sheet);
+            uploadnum[3] = pdtuploadexcel(sheet);
+            uploadnum[4] = jdtuploadexcel(sheet);
+            uploadnum[5] =  zhtuploadexcel(sheet);
             return "true";
         }catch (Exception e){
             e.printStackTrace();
