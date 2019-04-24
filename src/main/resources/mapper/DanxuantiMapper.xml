@@ -11,11 +11,9 @@
     <result column="nyd" jdbcType="VARCHAR" property="nyd" />
     <result column="UID" jdbcType="INTEGER" property="uid" />
     <result column="createTime" javaType="DATE" property="createTime"/>
+    <result column="text" jdbcType="VARCHAR" property="text"/>
   </resultMap>
 
-  <insert id="insertXzt" parameterType="com.example.pojo.Danxuanti" useGeneratedKeys="true" keyProperty="id">
-    insert into Danxuanti(tigan,xx,nyd,UID,da,createTime) values (#{tigan},#{xx},#{nyd},#{uid},#{da},#{createTime})
-  </insert>
   <select id="selectXztAll" parameterType="com.example.pojo.Danxuanti" resultType="com.example.pojo.Danxuanti">
     select * from Danxuanti
   </select>

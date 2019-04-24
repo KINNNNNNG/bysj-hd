@@ -16,6 +16,7 @@ public class DxtGson {
     private String da;
     private String createTime;
     private Integer fz;
+    private String text;
 
     public Integer getId() {
         return id;
@@ -79,5 +80,13 @@ public class DxtGson {
 
     public void setFz(Integer fz) {
         this.fz = fz;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

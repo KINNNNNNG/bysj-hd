@@ -20,7 +20,7 @@ public class Panduanti {
 
     @Column(name = "UID")
     private Integer uid;
-
+    private String text;
     /**
      * @return ID
      */
@@ -98,5 +98,13 @@ public class Panduanti {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

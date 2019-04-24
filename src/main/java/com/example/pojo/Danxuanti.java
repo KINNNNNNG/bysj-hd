@@ -20,6 +20,7 @@ public class Danxuanti {
     private String da;
     @Column(name = "createTime")
     private String createTime;
+    private String text;
     /**
      * @return ID
      */
@@ -105,5 +106,13 @@ public class Danxuanti {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

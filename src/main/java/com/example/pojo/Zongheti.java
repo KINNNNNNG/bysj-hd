@@ -20,6 +20,7 @@ public class Zongheti {
     private Integer uid;
 
     private String createTime;
+    private String text;
 
     /**
      * @return ID
@@ -106,5 +107,13 @@ public class Zongheti {
 
     public void setTm(String tm) {
         this.tm = tm;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

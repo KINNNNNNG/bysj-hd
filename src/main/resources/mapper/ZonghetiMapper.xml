@@ -13,9 +13,10 @@
     <result column="nyd" property="nyd" jdbcType="VARCHAR" />
     <result column="UID" property="uid" jdbcType="INTEGER" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="text" jdbcType="VARCHAR" property="text"/>
   </resultMap>
   <insert id="insertZht" parameterType="com.example.pojo.Zongheti" useGeneratedKeys="true" keyProperty="id">
-    insert into zongheti(tigan,tm,da,nyd,UID,createTime) values (#{tigan},#{tm},#{da},#{nyd},#{uid},#{createTime})
+    insert into zongheti(tigan,tm,da,nyd,UID,createTime,text) values (#{tigan},#{tm},#{da},#{nyd},#{uid},#{createTime},#{text})
   </insert>
   <select id="queryZhtAll" parameterType="com.example.pojo.Zongheti" resultType="com.example.pojo.Zongheti">
     select * from zongheti

@@ -22,7 +22,7 @@ public class Duoxuanti {
 
     @Column(name = "createTime")
     private String createtime;
-
+    private String text;
     /**
      * @return ID
      */
@@ -114,5 +114,13 @@ public class Duoxuanti {
 
     public void setCreatetime(String createtime) {
         this.createtime = createtime;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

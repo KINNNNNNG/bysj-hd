@@ -87,8 +87,20 @@ public class Mybatis {
             danxuanti.setDa(dxtGson.getDa());
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             danxuanti.setCreateTime(df.format(new Date()));
-            dxtService.saveDanxuanti(danxuanti);
-            return "true";
+            danxuanti.setText(dxtGson.getText());
+            List<Danxuanti> danxuantis = dxtService.queryDanxuantiAll();
+            int check = 0;
+            for (int i = 0; i < danxuantis.size(); i++) {
+                if (dxtGson.getText().equals(danxuantis.get(i).getText())){
+                    check = 1;
+                }
+            }
+            if (check == 1){
+                return "题目重复";
+            }else {
+                dxtService.saveDanxuanti(danxuanti);
+                return "true";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return e.toString();
@@ -204,8 +216,20 @@ public class Mybatis {
             duoxuanti.setDa(da);
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             duoxuanti.setCreatetime(df.format(new Date()));
-            duoxtService.saveDuoxuanti(duoxuanti);
-            return "true";
+            duoxuanti.setText(dxtGson.getText());
+            List<Duoxuanti> duoxuantis = duoxtService.queryDxtAll();
+            int chek = 0;
+            for (int i = 0; i < duoxuantis.size(); i++) {
+                if (dxtGson.getText().equals(duoxuantis.get(i).getText())){
+                    chek = 1;
+                }
+            }
+            if (chek == 1){
+                return "题目重复";
+            }else {
+                duoxtService.saveDuoxuanti(duoxuanti);
+                return "true";
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return e.toString();
@@ -295,7 +319,6 @@ public class Mybatis {
                 duoxuanti.setUid(Gson.getUid());
                 duoxtService.updataUid(duoxuanti);
             }
-
             return "true";
         } catch (Exception e) {
             e.printStackTrace();
@@ -322,8 +345,20 @@ public class Mybatis {
             }
             tiankongti.setDa(da);
             tiankongti.setCreateTime( new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            tktService.saveTiankongti(tiankongti);
-            return "true";
+            tiankongti.setText(tktGson.getText());
+            List<Tiankongti> tiankongtis = tktService.queryTktAll();
+            int check = 0;
+            for (int i = 0; i < tiankongtis.size(); i++) {
+                if (tktGson.getText().equals(tiankongtis.get(i).getText())){
+                    check = 1;
+                }
+            }
+            if (check == 1){
+                return "题目重复";
+            }else {
+                tktService.saveTiankongti(tiankongti);
+                return "true";
+            }
         }catch (Exception e){
             e.printStackTrace();
             return e.toString();
@@ -416,8 +451,20 @@ public class Mybatis {
             panduanti.setDa(pdtGson.getDa());
             panduanti.setNyd(pdtGson.getNyd());
             panduanti.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            pdtService.savePanduanti(panduanti);
-            return "true";
+            panduanti.setText(pdtGson.getText());
+            List<Panduanti> panduantis = pdtService.queryPdtAll();
+            int check = 0;
+            for (int i = 0; i < panduantis.size(); i++) {
+                if (pdtGson.getText().equals(panduantis.get(i).getText())){
+                    check = 1;
+                }
+            }
+            if (check == 1){
+                return "题目重复";
+            }else {
+                pdtService.savePanduanti(panduanti);
+                return "true";
+            }
         }catch (Exception e){
             return e.toString();
         }
@@ -490,8 +537,20 @@ public class Mybatis {
             jiandati.setDa(jdtGson.getDa());
             jiandati.setNyd(jdtGson.getNyd());
             jiandati.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            jdtService.saveJandati(jiandati);
-            return "true";
+            jiandati.setText(jdtGson.getText());
+            List<Jiandati> jiandatis = jdtService.queryJdtAll();
+            int check = 0;
+            for (int i = 0; i < jiandatis.size(); i++) {
+                if (jdtGson.getText().equals(jiandatis.get(i).getText())){
+                    check = 1;
+                }
+            }
+            if (check == 1){
+                return "题目重复";
+            }else {
+                jdtService.saveJandati(jiandati);
+                return "true";
+            }
         }catch (Exception e){
             e.printStackTrace();
             return e.toString();
@@ -580,8 +639,20 @@ public class Mybatis {
             zongheti.setDa(da);
             zongheti.setUid(0);
             zongheti.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            zhtService.saveZongheti(zongheti);
-            return "true";
+            zongheti.setText(zhtGson.getText());
+            List<Zongheti> zonghetis = zhtService.queryZhtAll();
+            int check = 0;
+            for (int i = 0; i < zonghetis.size(); i++) {
+                if (zhtGson.getText().equals(zonghetis.get(i).getText())){
+                    check = 1;
+                }
+            }
+            if (check == 1){
+                return "题目重复";
+            }else {
+                zhtService.saveZongheti(zongheti);
+                return "true";
+            }
         }catch (Exception e){
             e.printStackTrace();
             return e.toString();
@@ -2053,5 +2124,86 @@ public class Mybatis {
         }
 
         return ksdaGsons;
+    }
+    @RequestMapping(value = "userAll")
+    public List<User> userAll(){
+        return userService.queryUserAll();
+    }
+    @RequestMapping(value = "adduser")
+    public String adduser(@RequestBody User user){
+        try {
+            List<User> users = userService.queryUserAll();
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getName().equals(user.getName())){
+                    return "账号重复";
+                }
+            }
+            user.setCreatetime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+            userService.saveUser(user);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "reuser")
+    public String reuser(@RequestBody User user){
+        try {
+            userService.updateUser(user);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "deleteuser")
+    public String deleteuser(@RequestBody User user){
+        try {
+            userService.deleteUser(user.getId());
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "restudent")
+    public String restudent(@RequestBody Student student){
+        try {
+            studentService.update(student);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "deleteStudent")
+    public String deleteStudent(@RequestBody Student student){
+        try {
+            studentService.delete(student.getId());
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "addStudent")
+    public String addStudent(@RequestBody Student student){
+        try {
+            List<Student> students = studentService.queryAll();
+            for (int i = 0; i < students.size(); i++) {
+                if (students.get(i).getUser().equals(student.getUser())){
+                    return "账号重复";
+                }
+            }
+            studentService.save(student);
+            return "true";
+        }catch (Exception e){
+            e.printStackTrace();
+            return e.toString();
+        }
+    }
+    @RequestMapping(value = "getUserByName")
+    public User getUserByName(@RequestBody User user){
+        return userService.selectByName(user.getName());
     }
 }

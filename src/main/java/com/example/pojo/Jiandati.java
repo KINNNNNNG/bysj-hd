@@ -16,6 +16,7 @@ public class Jiandati {
     @Column(name = "UID")
     private Integer uid;
     private String createTime;
+    private String text;
     /**
      * @return ID
      */
@@ -93,5 +94,13 @@ public class Jiandati {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

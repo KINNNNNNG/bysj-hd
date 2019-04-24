@@ -20,4 +20,19 @@ public class StudentServiceImpl implements StudentService {
     public Student queryByUser(String user) {
         return studentMapper.queryByUser(user);
     }
+
+    @Override
+    public void update(Student student) {
+        studentMapper.updateByPrimaryKey(student);
+    }
+
+    @Override
+    public void delete(int id) {
+        studentMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void save(Student student) {
+        studentMapper.insertUseGeneratedKeys(student);
+    }
 }

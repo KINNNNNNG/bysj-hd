@@ -10,6 +10,7 @@ public class TktGson {
     private int uid;
     private String createTime;
     private Integer fz;
+    private String text;
     public String getTigan() {
         return tigan;
     }
@@ -64,5 +65,13 @@ public class TktGson {
 
     public void setFz(Integer fz) {
         this.fz = fz;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

@@ -13,10 +13,11 @@
     <result column="nyd" jdbcType="VARCHAR" property="nyd" />
     <result column="UID" jdbcType="INTEGER" property="uid" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="text" jdbcType="VARCHAR" property="text"/>
   </resultMap>
 
   <insert id="insertDuoxt" keyProperty="id" parameterType="com.example.pojo.Duoxuanti" useGeneratedKeys="true">
-    insert into Duoxuanti(tigan,xx,nyd,UID,da,createTime) values (#{tigan},#{xx},#{nyd},#{uid},#{da},#{createtime})
+    insert into Duoxuanti(tigan,xx,nyd,UID,da,createTime,text) values (#{tigan},#{xx},#{nyd},#{uid},#{da},#{createtime},#{text})
   </insert>
   <select id="queryDxtAll" parameterType="com.example.pojo.Duoxuanti" resultType="com.example.pojo.Duoxuanti">
     select * from duoxuanti

@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(User user) throws Exception {
-
+        userMapper.insertUseGeneratedKeys(user);
     }
 
     @Override
@@ -25,12 +25,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user) {
-
+        userMapper.updateByPrimaryKey(user);
     }
 
     @Override
     public void deleteUser(String userId) {
-
+        userMapper.deleteByPrimaryKey(userId);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryUserList(User user) {
-        return null;
+    public List<User> queryUserAll() {
+        return userMapper.selectAll();
     }
 
     @Override

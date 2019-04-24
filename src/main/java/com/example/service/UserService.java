@@ -18,7 +18,7 @@ public interface UserService {
 
     public User queryUserById(String userId);
 
-    public List<User> queryUserList(User user);
+    public List<User> queryUserAll();
 
     public List<User> queryUserListPaged(User user, Integer page, Integer pageSize);
 

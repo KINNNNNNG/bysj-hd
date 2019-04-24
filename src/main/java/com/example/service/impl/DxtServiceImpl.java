@@ -14,7 +14,7 @@ public class DxtServiceImpl implements DxtService {
     DanxuantiMapper danxuantiMapper;
     @Override
     public void saveDanxuanti(Danxuanti danxuanti) throws Exception {
-        danxuantiMapper.insertXzt(danxuanti);
+        danxuantiMapper.insertUseGeneratedKeys(danxuanti);
     }
 
     @Override

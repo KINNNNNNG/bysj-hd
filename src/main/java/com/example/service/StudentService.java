@@ -9,4 +9,7 @@ import java.util.List;
 public interface StudentService {
     public List<Student> queryAll();
     public Student queryByUser(String user);
+    public void update(Student student);
+    public void delete(int id);
+    public void save(Student student);
 }
