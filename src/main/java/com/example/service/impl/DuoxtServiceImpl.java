@@ -12,6 +12,7 @@ import java.util.List;
 public class DuoxtServiceImpl implements DuoxtService {
     @Autowired
     DuoxuantiMapper duoxuantiMapper;
+
     @Override
     public void saveDuoxuanti(Duoxuanti duoxuanti) throws Exception {
         duoxuantiMapper.insertDuoxt(duoxuanti);

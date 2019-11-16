@@ -1,7 +1,11 @@
 package com.example.pojo;
 
-import javax.persistence.*;
+import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+@Data
 public class Student {
     @Id
     @Column(name = "ID")
@@ -12,60 +16,4 @@ public class Student {
     private String pass;
 
     private String name;
-
-    /**
-     * @return ID
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return user
-     */
-    public String getUser() {
-        return user;
-    }
-
-    /**
-     * @param user
-     */
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    /**
-     * @return pass
-     */
-    public String getPass() {
-        return pass;
-    }
-
-    /**
-     * @param pass
-     */
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    /**
-     * @return name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 }

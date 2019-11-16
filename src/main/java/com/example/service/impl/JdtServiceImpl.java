@@ -12,6 +12,7 @@ import java.util.List;
 public class JdtServiceImpl implements JdtService {
     @Autowired
     JiandatiMapper jiandatiMapper;
+
     @Override
     public void saveJandati(Jiandati jiandati) {
         jiandatiMapper.insertJdt(jiandati);

@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface KsdaService {
     public void saveKsda(Ksda ksda);
+
     public List<Ksda> slectById(int id);
 }

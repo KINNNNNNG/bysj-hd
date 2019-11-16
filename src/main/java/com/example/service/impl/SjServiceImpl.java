@@ -12,6 +12,7 @@ import java.util.List;
 public class SjServiceImpl implements SjService {
     @Autowired
     SjMapper sjMapper;
+
     @Override
     public int saveSj(Sj sj) {
         int sj1 = 0;

@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.JiandatiMapper" >
-  <resultMap id="BaseResultMap" type="com.example.pojo.Jiandati" >
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="tigan" property="tigan" jdbcType="VARCHAR" />
-    <result column="da" property="da" jdbcType="VARCHAR" />
-    <result column="nyd" property="nyd" jdbcType="VARCHAR" />
-    <result column="fz" property="fz" jdbcType="INTEGER" />
-    <result column="UID" property="uid" jdbcType="INTEGER" />
-    <result column="text" jdbcType="VARCHAR" property="text"/>
-  </resultMap>
+<mapper namespace="com.example.mapper.JiandatiMapper">
+    <resultMap id="BaseResultMap" type="com.example.pojo.Jiandati">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="tigan" property="tigan" jdbcType="VARCHAR"/>
+        <result column="da" property="da" jdbcType="VARCHAR"/>
+        <result column="nyd" property="nyd" jdbcType="VARCHAR"/>
+        <result column="fz" property="fz" jdbcType="INTEGER"/>
+        <result column="UID" property="uid" jdbcType="INTEGER"/>
+        <result column="text" jdbcType="VARCHAR" property="text"/>
+    </resultMap>
 
-  <insert id="insertJdt" keyProperty="id" useGeneratedKeys="true" parameterType="com.example.pojo.Jiandati">
+    <insert id="insertJdt" keyProperty="id" useGeneratedKeys="true" parameterType="com.example.pojo.Jiandati">
     insert into jiandati(tigan,da,nyd,UID,createTime,text) values (#{tigan},#{da},#{nyd},#{uid},#{createTime},#{text})
   </insert>
-  <select id="queryJdtAll" resultType="com.example.pojo.Jiandati" parameterType="com.example.pojo.Jiandati">
+    <select id="queryJdtAll" resultType="com.example.pojo.Jiandati" parameterType="com.example.pojo.Jiandati">
     select * from jiandati
   </select>
-  <select id="queryJdtByUid" resultType="com.example.pojo.Jiandati" parameterType="com.example.pojo.Jiandati">
+    <select id="queryJdtByUid" resultType="com.example.pojo.Jiandati" parameterType="com.example.pojo.Jiandati">
     select * from jiandati where UID=1
   </select>
-  <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Jiandati">
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.example.pojo.Jiandati">
     select * from Jiandati where ID = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectNum" resultType="java.lang.Integer">
+    <select id="selectNum" resultType="java.lang.Integer">
     select count(*) from jiandati
   </select>
-  <delete id="deleteJdtById" parameterType="java.lang.Integer">
+    <delete id="deleteJdtById" parameterType="java.lang.Integer">
     delete from jiandati where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <update id="updataById" parameterType="com.example.pojo.Jiandati">
+    <update id="updataById" parameterType="com.example.pojo.Jiandati">
     update jiandati set tigan=#{tigan},da=#{da},nyd=#{nyd} where id = #{id}
   </update>
-  <update id="updataUid" parameterType="com.example.pojo.Jiandati">
+    <update id="updataUid" parameterType="com.example.pojo.Jiandati">
     update jiandati set UID=#{uid} where id = #{id}
   </update>
 </mapper>

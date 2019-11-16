@@ -12,6 +12,7 @@ import java.util.List;
 public class ZhtServiceImpl implements ZhtService {
     @Autowired
     ZonghetiMapper zonghetiMapper;
+
     @Override
     public void saveZongheti(Zongheti zongheti) {
         zonghetiMapper.insertZht(zongheti);

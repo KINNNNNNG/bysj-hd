@@ -8,11 +8,18 @@ import java.util.List;
 @Service
 public interface JdtService {
     public void saveJandati(Jiandati jiandati);
+
     public List<Jiandati> queryJdtAll();
+
     public List<Jiandati> queryJdtByUid();
+
     public void deleteJdtById(int Id);
+
     public void updataById(Jiandati jiandati);
+
     public void updataUid(Jiandati jiandati);
+
     public Jiandati selectById(int id);
+
     public int selectNum();
 }

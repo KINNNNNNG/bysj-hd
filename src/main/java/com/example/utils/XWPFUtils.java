@@ -1,7 +1,7 @@
-package com.example.controller;
+package com.example.utils;
+
 import com.microsoft.schemas.vml.CTShape;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFPictureData;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
@@ -14,7 +14,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 public class XWPFUtils {
     public static List<String> readImageInParagraph(XWPFParagraph paragraph) {
         List<String> imageBundleList = new ArrayList<String>();

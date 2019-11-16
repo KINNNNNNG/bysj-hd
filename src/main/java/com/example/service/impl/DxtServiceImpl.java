@@ -12,6 +12,7 @@ import java.util.List;
 public class DxtServiceImpl implements DxtService {
     @Autowired
     DanxuantiMapper danxuantiMapper;
+
     @Override
     public void saveDanxuanti(Danxuanti danxuanti) throws Exception {
         danxuantiMapper.insertUseGeneratedKeys(danxuanti);
@@ -45,7 +46,7 @@ public class DxtServiceImpl implements DxtService {
     @Override
     public List<Danxuanti> queryDanxuantiAll() {
         List<Danxuanti> danxuanti = danxuantiMapper.selectXztAll();
-        return danxuanti ;
+        return danxuanti;
     }
 
     @Override

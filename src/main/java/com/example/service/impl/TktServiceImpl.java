@@ -12,6 +12,7 @@ import java.util.List;
 public class TktServiceImpl implements TktService {
     @Autowired
     TiankongtiMapper tiankongtiMapper;
+
     @Override
     public void saveTiankongti(Tiankongti tiankongti) {
         tiankongtiMapper.insertTkt(tiankongti);

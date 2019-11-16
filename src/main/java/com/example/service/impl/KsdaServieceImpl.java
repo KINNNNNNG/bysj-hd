@@ -12,6 +12,7 @@ import java.util.List;
 public class KsdaServieceImpl implements KsdaService {
     @Autowired
     KsdaMapper ksdaMapper;
+
     @Override
     public void saveKsda(Ksda ksda) {
         ksdaMapper.insert(ksda);
