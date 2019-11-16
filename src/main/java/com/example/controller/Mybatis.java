@@ -44,11 +44,15 @@ public class Mybatis {
     @RequestMapping("/login")
     public String login(@RequestBody User userGet) {
         User user = userService.selectByName(userGet.getName());
+        if(user==null){
+            return "账号为空";
+        }else {
             if (user.getPass().equals(userGet.getPass())&&user.getName().equals(userGet.getName())){
                 return "true";
             }else {
                 return "请检查账号密码是否正确";
             }
+        }
 
     }
     public String RequestReader(HttpServletRequest request){
